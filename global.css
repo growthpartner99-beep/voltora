@@ -3,3 +3,70 @@
 @import "tailwindcss/utilities.css";
 
 @import "nativewind/theme";
+
+/* DentaCare design tokens — mirror of src/theme/tokens.ts.
+   Keep both in sync; tokens.ts is for non-class use (gradients, StyleSheet). */
+@theme {
+  /* Color palette */
+  --color-primary: #24d4df;
+  --color-turquoise: #26c6da;
+  --color-cyan-glow: #8af5ff;
+  --color-deep-blue: #075a92;
+  --color-navy: #17324a;
+  --color-muted: #72889a;
+  --color-surface: #ffffff;
+  --color-background: #f7fbff;
+  --color-powder: #e6f2ff;
+  --color-border: #e6f2ff;
+  --color-success: #34c79a;
+  --color-coral: #ff7a6a;
+
+  /* Type scale (iOS default font is already SF Pro) */
+  --text-display: 48px;
+  --text-display--line-height: 56px;
+  --text-display--font-weight: 700;
+  --text-h1: 32px;
+  --text-h1--line-height: 40px;
+  --text-h1--font-weight: 600;
+  --text-h2: 24px;
+  --text-h2--line-height: 32px;
+  --text-h2--font-weight: 600;
+  --text-h3: 20px;
+  --text-h3--line-height: 28px;
+  --text-h3--font-weight: 500;
+  --text-title: 17px;
+  --text-title--line-height: 24px;
+  --text-title--font-weight: 600;
+  --text-body: 16px;
+  --text-body--line-height: 24px;
+  --text-body--font-weight: 400;
+  --text-body-sm: 14px;
+  --text-body-sm--line-height: 20px;
+  --text-body-sm--font-weight: 400;
+  --text-caption: 12px;
+  --text-caption--line-height: 16px;
+  --text-caption--font-weight: 400;
+  --text-btn: 16px;
+  --text-btn--line-height: 20px;
+  --text-btn--font-weight: 600;
+  --text-tab: 13px;
+  --text-tab--line-height: 16px;
+  --text-tab--font-weight: 500;
+
+  /* Corner radii */
+  --radius-sm: 12px;
+  --radius-card: 16px;
+  --radius-card-lg: 20px;
+  --radius-field: 16px;
+  --radius-sheet: 28px;
+
+  /* Shadows (navy-tinted, soft) */
+  --shadow-card: 0px 4px 16px 0px rgba(23, 50, 74, 0.08);
+  --shadow-floating: 0px 12px 32px 0px rgba(23, 50, 74, 0.12);
+  --shadow-glow: 0px 0px 24px 0px rgba(36, 212, 223, 0.35);
+
+  /* Component dimensions */
+  --size-control: 52px;
+  --size-chip: 36px;
+  --size-icon-button: 48px;
+}
