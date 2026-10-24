@@ -1,0 +1,20 @@
+- generic [ref=e8]:
+  - generic [ref=e9]:
+    - generic:
+      - generic:
+        - img
+  - generic [ref=e10]:
+    - generic [ref=e11]: DentaCare
+    - generic [ref=e12]: Care for your smile, without the phone call
+    - generic [ref=e13]: Modern dental care, made easy.
+    - button "Continue with Apple" [ref=e14] [cursor=pointer]:
+      - img [ref=e23]
+      - generic [ref=e15]: Continue with Apple
+    - button "Continue with Google" [ref=e16] [cursor=pointer]:
+      - img [ref=e25]
+      - generic [ref=e17]: Continue with Google
+    - generic [ref=e18]:
+      - generic [ref=e19]:
+        - img [ref=e27]
+        - generic [ref=e20]: By continuing, you agree to our
+      - generic [ref=e21]: Privacy Policy and Terms of Use

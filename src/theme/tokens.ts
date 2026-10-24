@@ -19,6 +19,8 @@ export const colors = {
   border: "#E6F2FF",
   success: "#34C79A",
   coral: "#FF7A6A",
+  /** Inline links (legal footer). */
+  link: "#0E86D8",
 } as const;
 
 export const gradients = {

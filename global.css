@@ -20,6 +20,7 @@
   --color-border: #e6f2ff;
   --color-success: #34c79a;
   --color-coral: #ff7a6a;
+  --color-link: #0e86d8;
 
   /* Type scale (iOS default font is already SF Pro) */
   --text-display: 48px;
