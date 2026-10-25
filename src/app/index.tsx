@@ -1,5 +1,8 @@
+import { useSSO } from "@clerk/expo/experimental";
 import { Image } from "expo-image";
+import { Link } from "expo-router";
 import { StatusBar } from "expo-status-bar";
+import { useState } from "react";
 import { Pressable, Text, View } from "react-native";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 
@@ -10,8 +13,8 @@ import { useSafeAreaInsets } from "react-native-safe-area-context";
  * Hero art: assets/images/auth-hero.png. Apple / Google / lock glyphs are
  * extracted from the same reference, since no icon library is installed.
  *
- * Sign-in actions are wired to Clerk in a later step; the buttons are
- * visual placeholders here.
+ * Apple / Google use Clerk's OAuth SSO flow; email auth lives on the
+ * (auth) sign-up / sign-in screens.
  */
 
 const CARD_MARGIN = 8;
@@ -19,6 +22,46 @@ const BUTTON_RADIUS = 20;
 
 export default function Welcome() {
   const insets = useSafeAreaInsets();
+  const { startSSOFlow } = useSSO();
+  const [ssoProvider, setSsoProvider] = useState<
+    "apple" | "google" | null
+  >(null);
+  const [ssoError, setSsoError] = useState<string | null>(null);
+
+  const ssoBusy = ssoProvider !== null;
+
+  const handleSSO = async (provider: "apple" | "google") => {
+    if (ssoBusy) return;
+    setSsoProvider(provider);
+    setSsoError(null);
+    const t0 = Date.now();
+    const mark = (phase: string) =>
+      console.log(`[SSO ${provider}] ${phase} @ +${Date.now() - t0}ms`);
+    mark("tapped — opening flow");
+    try {
+      // Session is activated automatically; the root layout guard
+      // navigates into the app.
+      const result = await startSSOFlow({
+        strategy: provider === "apple" ? "oauth_apple" : "oauth_google",
+      });
+      mark(
+        `flow returned — session=${result.createdSessionId ?? "null"} browser=${
+          result.authSessionResult?.type ?? "n/a"
+        }`,
+      );
+    } catch (err) {
+      const message = err instanceof Error ? err.message : String(err);
+      mark(`threw — ${message}`);
+      if (__DEV__) console.warn(`SSO (${provider}) failed:`, err);
+      setSsoError(
+        `Could not continue with ${
+          provider === "apple" ? "Apple" : "Google"
+        }: ${message}`,
+      );
+    } finally {
+      setSsoProvider(null);
+    }
+  };
 
   return (
     <View className="flex-1 bg-[linear-gradient(150deg,#9CCBF0_0%,#CDE7FB_45%,#E6F4FE_100%)]">
@@ -63,8 +106,11 @@ export default function Welcome() {
         <Pressable
           accessibilityRole="button"
           accessibilityLabel="Continue with Apple"
+          accessibilityState={{ disabled: ssoBusy, busy: ssoProvider === "apple" }}
+          disabled={ssoBusy}
+          onPress={() => handleSSO("apple")}
           className="relative mt-4 h-[52px] flex-row items-center justify-center bg-black active:opacity-80"
-          style={{ borderRadius: BUTTON_RADIUS }}
+          style={{ borderRadius: BUTTON_RADIUS, opacity: ssoBusy ? 0.6 : 1 }}
         >
           <Image
             source={require("../../assets/images/apple-logo.png")}
@@ -81,8 +127,11 @@ export default function Welcome() {
         <Pressable
           accessibilityRole="button"
           accessibilityLabel="Continue with Google"
+          accessibilityState={{ disabled: ssoBusy, busy: ssoProvider === "google" }}
+          disabled={ssoBusy}
+          onPress={() => handleSSO("google")}
           className="relative mt-[14px] h-[52px] flex-row items-center justify-center bg-white shadow-card active:opacity-80"
-          style={{ borderRadius: BUTTON_RADIUS }}
+          style={{ borderRadius: BUTTON_RADIUS, opacity: ssoBusy ? 0.6 : 1 }}
         >
           <Image
             source={require("../../assets/images/google-g.png")}
@@ -94,6 +143,38 @@ export default function Welcome() {
             Continue with Google
           </Text>
         </Pressable>
+
+        {ssoError ? (
+          <Text className="mt-3 text-center text-[13px] leading-[18px] text-red-600">
+            {ssoError}
+          </Text>
+        ) : null}
+
+        {/* Email auth entry points */}
+        <Link href="/sign-up" asChild>
+          <Pressable
+            accessibilityRole="button"
+            accessibilityLabel="Sign up with email"
+            disabled={ssoBusy}
+            className="mt-[14px] h-[52px] items-center justify-center border border-navy/15 bg-white/60 active:opacity-80"
+            style={{ borderRadius: BUTTON_RADIUS, opacity: ssoBusy ? 0.6 : 1 }}
+          >
+            <Text className="text-[16px] font-semibold text-navy">
+              Sign up with email
+            </Text>
+          </Pressable>
+        </Link>
+
+        <View className="mt-4 flex-row items-center justify-center">
+          <Text className="text-[13px] leading-[18px] text-muted">
+            Already have an account?{" "}
+          </Text>
+          <Link href="/sign-in" replace>
+            <Text className="text-[13px] font-semibold leading-[18px] text-link">
+              Sign in
+            </Text>
+          </Link>
+        </View>
 
         {/* Legal footer */}
         <View className="mt-6 items-center">

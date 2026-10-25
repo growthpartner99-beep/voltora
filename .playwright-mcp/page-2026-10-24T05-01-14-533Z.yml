@@ -1,0 +1,19 @@
+- generic [ref=e22]:
+  - button "Go back" [ref=e23] [cursor=pointer]:
+    - generic [ref=e24]: ‹ Back
+  - generic [ref=e25]: DentaCare
+  - generic [ref=e26]: Welcome back
+  - generic [ref=e27]: Sign in to pick up your lessons right where you stopped.
+  - generic [ref=e28]:
+    - generic [ref=e29]: Email address
+    - textbox "you@example.com" [ref=e30]: demo.1792817797545@example.com
+    - generic [ref=e39]: Couldn't find your account.
+  - generic [ref=e31]:
+    - generic [ref=e32]: Password
+    - textbox "Your password" [ref=e33]: Sup3rSecret!pass
+  - button "Sign in" [ref=e34] [cursor=pointer]:
+    - generic [ref=e40]: Sign in
+  - generic [ref=e36]:
+    - generic [ref=e37]: New to Voltora?
+    - link "Create account" [ref=e38] [cursor=pointer]:
+      - /url: /sign-up

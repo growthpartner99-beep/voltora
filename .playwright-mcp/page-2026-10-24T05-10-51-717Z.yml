@@ -1,0 +1,25 @@
+- generic [ref=e14]:
+  - img [ref=e17]
+  - generic [ref=e18]:
+    - generic [ref=e19]: DentaCare
+    - generic [ref=e20]: Care for your smile, without the phone call
+    - generic [ref=e21]: Modern dental care, made easy.
+    - button "Continue with Apple" [ref=e22] [cursor=pointer]:
+      - img [ref=e24]
+      - generic [ref=e25]: Continue with Apple
+    - button "Continue with Google" [ref=e26] [cursor=pointer]:
+      - img [ref=e28]
+      - generic [ref=e29]: Continue with Google
+    - generic [ref=e41]: Could not continue with Google. Please try again.
+    - link "Sign up with email" [ref=e30] [cursor=pointer]:
+      - /url: /sign-up
+      - generic [ref=e31]: Sign up with email
+    - generic [ref=e32]:
+      - generic [ref=e33]: Already have an account?
+      - link "Sign in" [ref=e34] [cursor=pointer]:
+        - /url: /sign-in
+    - generic [ref=e35]:
+      - generic [ref=e36]:
+        - img [ref=e38]
+        - generic [ref=e39]: By continuing, you agree to our
+      - generic [ref=e40]: Privacy Policy and Terms of Use

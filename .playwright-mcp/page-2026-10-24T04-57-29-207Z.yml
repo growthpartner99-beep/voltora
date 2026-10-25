@@ -1,0 +1,17 @@
+- generic [ref=e22]:
+  - button "Go back" [ref=e23] [cursor=pointer]:
+    - generic [ref=e24]: ‹ Back
+  - generic [ref=e25]: DentaCare
+  - generic [ref=e26]: Check your email
+  - generic [ref=e27]: We sent a 6-digit code to demo.1792817797545@example.com.
+  - generic [ref=e28]:
+    - generic [ref=e29]: Verification code
+    - textbox "123456" [ref=e39]
+  - button "Verify email" [disabled]:
+    - generic [ref=e40]: Verify email
+  - button "I need a new code" [ref=e41] [cursor=pointer]:
+    - generic [ref=e42]: I need a new code
+  - generic [ref=e35]:
+    - generic [ref=e36]: Already have an account?
+    - link "Sign in" [ref=e37] [cursor=pointer]:
+      - /url: /sign-in

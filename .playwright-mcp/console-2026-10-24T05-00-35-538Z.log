@@ -1,0 +1,9 @@
+[    1150ms] [INFO] %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold @ http://localhost:8082/node_modules/expo-router/entry.bundle?platform=web&dev=true&hot=false&lazy=true&transform.asyncRoutes=true&transform.routerRoot=src%2Fapp&transform.reactCompiler=true:70971
+[    1190ms] [LOG] Running application "main" with appParams: {rootTag: #root, hydrate: true} @ http://localhost:8082/node_modules/expo-router/entry.bundle?platform=web&dev=true&hot=false&lazy=true&transform.asyncRoutes=true&transform.routerRoot=src%2Fapp&transform.reactCompiler=true:70971
+[    2010ms] [WARNING] Clerk: Clerk has been loaded with development keys. Development instances have strict usage limits and should not be used when deploying your application to production. Learn more: https://clerk.com/docs/deployments/overview @ http://localhost:8082/node_modules/expo-router/entry.bundle?platform=web&dev=true&hot=false&lazy=true&transform.asyncRoutes=true&transform.routerRoot=src%2Fapp&transform.reactCompiler=true:70971
+[    4603ms] [VERBOSE] [DOM] Password field is not contained in a form: (More info: https://goo.gl/9p2vKq) %o @ http://localhost:8082/sign-in:0
+[   31127ms] [ERROR] Failed to load resource: the server responded with a status of 422 () @ https://suitable-mayfly-8965.clerk.accounts.dev/v1/client/sign_ins?__clerk_api_version=2026-08-20&_clerk_js_version=6.40.1&__clerk_db_jwt=dvb_3L7uzcE5Zlw2Plhg0dITpZRA6GS:0
+[   74834ms] [WARNING] Disconnected from Metro (1006)
+To reconnect:
+- Ensure that Metro is running and available on the same network
+- Reload this app (will trigger further help if Metro cannot be connected to) @ http://localhost:8082/node_modules/expo-router/entry.bundle?platform=web&dev=true&hot=false&lazy=true&transform.asyncRoutes=true&transform.routerRoot=src%2Fapp&transform.reactCompiler=true:70971

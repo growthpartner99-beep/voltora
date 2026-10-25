@@ -1,0 +1,18 @@
+- generic [ref=e22]:
+  - button "Go back" [ref=e23] [cursor=pointer]:
+    - generic [ref=e24]: ‹ Back
+  - generic [ref=e25]: DentaCare
+  - generic [ref=e26]: Create your account
+  - generic [ref=e27]: Care for your smile, without the phone call.
+  - generic [ref=e28]:
+    - generic [ref=e29]: Email address
+    - textbox "you@example.com" [ref=e30]
+  - generic [ref=e31]:
+    - generic [ref=e32]: Password
+    - textbox "Create a password" [ref=e33]
+  - button "Sign up" [disabled]:
+    - generic [ref=e34]: Sign up
+  - generic [ref=e35]:
+    - generic [ref=e36]: Already have an account?
+    - link "Sign in" [ref=e37] [cursor=pointer]:
+      - /url: /sign-in
