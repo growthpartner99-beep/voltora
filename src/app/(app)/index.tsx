@@ -7,7 +7,7 @@ import { AuthButton } from '../../components/auth-shell';
 import { colors, radii, typography } from '../../theme/tokens';
 
 /**
- * Home screen behind auth (plan.md Phase 2). Lessons / XP / streaks
+ * Home screen behind auth (plan.md Phase 2). Appointments and messages
  * land in later phases; this is the signed-in landing anchor.
  */
 export default function HomeScreen() {
@@ -37,13 +37,13 @@ export default function HomeScreen() {
         <Text style={styles.eyebrow}>Signed in</Text>
         <Text style={styles.title}>Welcome, {name}</Text>
         <Text style={styles.subtitle}>
-          Your lessons, XP, and daily streak will show up here.
+          Your appointments, messages, and care instructions will show up here.
         </Text>
 
         <View style={styles.card}>
-          <Text style={styles.cardTitle}>Daily goal</Text>
+          <Text style={styles.cardTitle}>Next appointment</Text>
           <Text style={styles.cardBody}>
-            Complete your first lesson to start a streak.
+            No upcoming visits yet. Book one to get started.
           </Text>
         </View>
       </View>

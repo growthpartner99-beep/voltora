@@ -70,7 +70,7 @@ export default function SignIn() {
       subtitle={
         pendingCode
           ? `For your security, we sent a code to ${emailAddress}.`
-          : "Sign in to pick up your lessons right where you stopped."
+          : "Sign in to manage your appointments and messages."
       }
     >
       {globalError ? (

@@ -1,4 +1,5 @@
 import { useSSO } from "@clerk/expo/experimental";
+import Constants from "expo-constants";
 import { Image } from "expo-image";
 import { Link } from "expo-router";
 import { StatusBar } from "expo-status-bar";
@@ -20,6 +21,18 @@ import { useSafeAreaInsets } from "react-native-safe-area-context";
 const CARD_MARGIN = 8;
 const BUTTON_RADIUS = 20;
 
+/**
+ * Expo Go only registers the `exp://` scheme, yet it reports its environment to
+ * expo-linking as `bare`, so Clerk's default redirect resolves to
+ * `voltora://sso-callback`. Nothing on the device can open that, so the OAuth
+ * tab never hands control back and the flow hangs. Inside Expo Go, send Clerk
+ * the dev-server link instead, which matches the Expo Go allowlist entry.
+ * A development/production build keeps Clerk's default (`voltora://...`).
+ */
+const SSO_REDIRECT_URL = Constants.expoGoConfig?.debuggerHost
+  ? `exp://${Constants.expoGoConfig.debuggerHost}/--/sso-callback`
+  : undefined;
+
 export default function Welcome() {
   const insets = useSafeAreaInsets();
   const { startSSOFlow } = useSSO();
@@ -34,24 +47,15 @@ export default function Welcome() {
     if (ssoBusy) return;
     setSsoProvider(provider);
     setSsoError(null);
-    const t0 = Date.now();
-    const mark = (phase: string) =>
-      console.log(`[SSO ${provider}] ${phase} @ +${Date.now() - t0}ms`);
-    mark("tapped — opening flow");
     try {
       // Session is activated automatically; the root layout guard
       // navigates into the app.
-      const result = await startSSOFlow({
+      await startSSOFlow({
         strategy: provider === "apple" ? "oauth_apple" : "oauth_google",
+        redirectUrl: SSO_REDIRECT_URL,
       });
-      mark(
-        `flow returned — session=${result.createdSessionId ?? "null"} browser=${
-          result.authSessionResult?.type ?? "n/a"
-        }`,
-      );
     } catch (err) {
       const message = err instanceof Error ? err.message : String(err);
-      mark(`threw — ${message}`);
       if (__DEV__) console.warn(`SSO (${provider}) failed:`, err);
       setSsoError(
         `Could not continue with ${

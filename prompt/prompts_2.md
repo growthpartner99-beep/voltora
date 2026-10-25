@@ -87,7 +87,7 @@ Ensure the design system supports consistent styling for elements such as:
 
 Use NativeWind utilities wherever appropriate, while preserving the project's existing architecture and avoiding unnecessary abstractions.
 
-Do not build the onboarding, sign-in, sign-up, home, or lesson screens in this step unless `plan.md` explicitly requires otherwise.
+Do not build the onboarding, sign-in, sign-up, or home screens in this step unless `plan.md` explicitly requires otherwise.
 
 ## 6. Preserve existing functionality
 
